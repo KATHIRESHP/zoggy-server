@@ -2,8 +2,27 @@ const nodemailer = require('nodemailer');
 const User = require('../modal/userModal')
 
 module.exports.login = async (req, res, next) => {
+    console.log("Login called")
     try{
-        console.log("Login called")
+        const email = req.body.email;
+        const password = req.body.password;
+        const user = await User.findOne({email: email});
+        if(!user)
+        {
+            res.json({status: false, msg: "User not found"});
+        }
+        else
+        {
+            if(user.password == password)
+            {
+                await delete user.password;
+                res.json({status: true, user});
+            }
+            else
+            {
+                res.json({status: false, msg: "Password in not valid"});
+            }
+        }
     }
     catch(error)
     {
