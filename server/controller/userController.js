@@ -15,7 +15,8 @@ module.exports.login = async (req, res, next) => {
         {
             if(user.password == password)
             {
-                await delete user.password;
+                user.password = "*************";
+                console.log(user);
                 res.json({status: true, user});
             }
             else
