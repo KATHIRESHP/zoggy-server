@@ -84,7 +84,7 @@ module.exports.register = async (req, res, next) => {
             email,
             password
         });
-        await delete user.password;
+        user.password = "************";
         res.json({msg:"User created", status: true, user});
     }
     catch(error)
