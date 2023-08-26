@@ -5,30 +5,25 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    data: {
-        items : {
-            type: Array,
-            name: {
-                type: String
-            },
-            count:{
-                type: Number
-            },
-            price:{
-                type: String
-            }
+    items: {
+        type: Array,
+        name: {
+            type: String
         },
-        price :{
+        count: {
+            type: Number
+        },
+        price: {
             type: Number
         }
     },
-    status :{
-        type: Boolean,
-        required: true
-    }
+    status : {
+    type: Boolean,
+    required: true
+}
 },
-    {
-        timestamps: true
-    });
+{
+    timestamps: true
+});
 
 module.exports = mongoose.model('Orders', orderSchema);
