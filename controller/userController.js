@@ -21,7 +21,7 @@ module.exports.login = async (req, res, next) => {
             }
             else
             {
-                res.json({status: false, msg: "Password in not valid"});
+                res.json({status: false, msg: "Password is not valid"});
             }
         }
     }
