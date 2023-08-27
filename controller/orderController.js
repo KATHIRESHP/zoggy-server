@@ -67,3 +67,16 @@ module.exports.getcart = async(req, res, next) => {
         next(e);
     }
 }
+
+module.exports.getallorders = async (req, res, next) => {
+    console.log("Get all orders admin");
+    try{
+        const orders = await Order.find()
+        console.log(orders);
+        res.json({orders, status : true});
+    }
+    catch(e)
+    {
+        next(e);
+    }
+}
